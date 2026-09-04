@@ -1,13 +1,355 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Convite</title>
+
+  <title>Convite • Maya 4 anos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff7dc;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .pagina {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       ENVELOPE
+    ========================= */
+
+    #envelope {
+      width: 100%;
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .envelope-container img {IMG_2624.PNG
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /*
+      ÁREA INVISÍVEL DO BOTÃO "ABRIR"
+
+      Se quiser mudar a posição:
+      left = esquerda/direita
+      top = cima/baixo
+    */
+
+    .botao-abrir {
+      position: absolute;
+
+      left: 35%;
+      top: 67%;
+
+      width: 30%;
+      height: 13%;
+
+      background: transparent;
+      border: none;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       CONVITE
+    ========================= */
+
+    #convite {Convite • Maya 4 anos.mp4
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+
+      background: #fff7dc;
+    }
+
+    .video-container {
+      width: 100%;
+      background: #000;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+
+      display: block;
+    }
+
+
+    /* =========================
+       BOTÕES
+    ========================= */
+
+    .botoes {
+      width: 100%;
+
+      padding: 15px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .botao {
+      width: 100%;
+
+      padding: 15px;
+
+      border-radius: 15px;
+
+      background: white;
+
+      color: #7d2020;
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+
+    /* =========================
+       VOLTAR
+    ========================= */
+
+    .voltar {
+      display: block;
+
+      margin: 5px auto 25px;
+
+      border: none;
+      background: transparent;
+
+      color: #765d28;
+
+      font-size: 13px;
+
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 
+
 <body>
-  <h1>Meu Convite</h1>
-  <p>Bem-vindo ao meu convite!</p>
+
+  <main class="pagina">
+
+
+    <!-- ==================================
+         PRIMEIRA TELA — ENVELOPE
+    =================================== -->
+
+    <section id="envelope">
+
+      <div class="envelope-container">
+
+        <img
+          src="imagens/envelope.jpeg"
+          alt="Envelope do convite"
+        >
+
+        <!-- BOTÃO INVISÍVEL SOBRE O CORAÇÃO -->
+
+        <button
+          class="botao-abrir"
+          id="abrir"
+          aria-label="Abrir convite">
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         SEGUNDA TELA — CONVITE
+    =================================== -->
+
+    <section id="convite">
+
+
+      <!-- VÍDEO -->
+
+      <div class="video-container">
+
+        <video
+          id="videoConvite"
+          controls
+          playsinline
+          preload="metadata">
+
+          <source
+            src="imagens/convite.mp4"
+            type="video/mp4">
+
+          Seu navegador não conseguiu reproduzir o vídeo.
+
+        </video>
+
+      </div>
+
+
+
+      <!-- ==================================
+           BOTÕES INTERATIVOS
+      =================================== -->
+
+      <div class="botoes">
+
+
+        <!-- CONFIRMAR PRESENÇA -->
+
+        <a
+          class="botao"
+          href="https://wa.me/5587988636409?text=Oi%2C%20amei%20o%20convite!%0AConfirmo%20minha%20presen%C3%A7a!%20%F0%9F%92%9A%0A%0A*Nome%3A*"
+          target="_blank">
+
+          💌 Confirmar presença
+
+        </a>
+
+
+
+        <!-- LOCALIZAÇÃO -->
+
+        <a
+          class="botao"
+          href="https://maps.app.goo.gl/CpKpdyZcJ7C818vf8?g_st=ic"
+          target="_blank">
+
+          📍 Local da festa
+
+        </a>
+
+
+      </div>
+
+
+
+      <!-- VOLTAR PARA O ENVELOPE -->
+
+      <button
+        class="voltar"
+        id="voltar">
+
+        ↩️ Voltar para o envelope
+
+      </button>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==================================
+       JAVASCRIPT
+  =================================== -->
+
+  <script>
+
+    const envelope =
+      document.getElementById("envelope");
+
+    const convite =
+      document.getElementById("convite");
+
+    const abrir =
+      document.getElementById("abrir");
+
+    const voltar =
+      document.getElementById("voltar");
+
+    const video =
+      document.getElementById("videoConvite");
+
+
+    /* ABRIR CONVITE */
+
+    abrir.addEventListener("click", function () {
+
+      envelope.style.display = "none";
+
+      convite.style.display = "block";
+
+      window.scrollTo(0, 0);
+
+      /*
+        Tenta iniciar o vídeo automaticamente.
+
+        Alguns celulares podem bloquear
+        o autoplay com som.
+      */
+
+      video.play().catch(function () {
+
+        console.log(
+          "O navegador bloqueou o autoplay."
+        );
+
+      });
+
+    });
+
+
+    /* VOLTAR */
+
+    voltar.addEventListener("click", function () {
+
+      video.pause();
+
+      video.currentTime = 0;
+
+      convite.style.display = "none";
+
+      envelope.style.display = "flex";
+
+      window.scrollTo(0, 0);
+
+    });
+
+  </script>
+
+
 </body>
+
 </html>
